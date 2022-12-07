@@ -1,34 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import React, { useState } from "react";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const startDate = new Date("2022-9-13");
+  const nowDate = new Date(Date.now());
+
+  function getDayOfTime(startDate: Date, endDate: Date) {
+    let ms1 = startDate.getTime();
+    let ms2 = endDate.getTime();
+    return Math.ceil((ms2 - ms1) / (24 * 60 * 60 * 1000));
+  }
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div>
+      <h1>Count days</h1>
+      <p>{getDayOfTime(startDate, nowDate)}</p>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
